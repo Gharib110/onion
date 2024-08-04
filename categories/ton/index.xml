@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TON on Onion Links</title>
+    <link>http://localhost:1313/categories/ton/</link>
+    <description>Recent content in TON on Onion Links</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Alireza Gharib. All right reserved</copyright>
+    <lastBuildDate>Fri, 02 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/ton/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HAProxy as an upstream reverse proxy</title>
+      <link>http://localhost:1313/posts/haproxy/</link>
+      <pubDate>Fri, 02 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/haproxy/</guid>
+      <description>How to use HAProxy as an upstream Reverse Proxy ?</description>
+    </item>
+    <item>
+      <title>Let&#39;s Deploy TON Site </title>
+      <link>http://localhost:1313/posts/tonsite/</link>
+      <pubDate>Fri, 02 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/tonsite/</guid>
+      <description>How to Deploy TON Website ?</description>
+    </item>
+  </channel>
+</rss>

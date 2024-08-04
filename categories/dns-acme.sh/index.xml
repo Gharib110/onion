@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DNS, Acme.sh on Onion Links</title>
+    <link>http://localhost:1313/categories/dns-acme.sh/</link>
+    <description>Recent content in DNS, Acme.sh on Onion Links</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Alireza Gharib. All right reserved</copyright>
+    <lastBuildDate>Tue, 30 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/dns-acme.sh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS and Certificate</title>
+      <link>http://localhost:1313/posts/dns/</link>
+      <pubDate>Tue, 30 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dns/</guid>
+      <description>How to install dns server anc acquire TLS Certificate ?</description>
+    </item>
+  </channel>
+</rss>

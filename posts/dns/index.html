@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>DNS and Certificate</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	=================<br>
+	== <a href="http://localhost:1313/">Onion Links</a> ==<br>
+	=================
+	<div style="float: right;">Onion Links</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>DNS and Certificate</h1>
+			<b><time>30.07.2024 00:00</time></b>
+		       
+		           <a href="/tags/dns-acme.sh-tls">dns, acme.sh, tls</a>
+        	       
+
+			<div>
+				<h1 id="acquiring-tls-certificate-and-key">Acquiring TLS Certificate and Key</h1>
+<p>If you want to run a website that supports HTTPS you should get tls certificate for it. I will not delve into the
+technical things behind the TLS and HTTPS protocol. Just Acquiring Free 3-months certificate.</p>
+<ul>
+<li>Clone this repo <a href="https://github.com/acmesh-official/acme.sh">acme.sh</a> and <code>cd</code> to that directory.</li>
+<li>Run <code>acme.sh  --issue --server letsencrypt -d 'qharib.ir' --dns --yes-I-know-dns-manual-mode-enough-go-ahead-please</code></li>
+<li>Follow the instructions to add the respective TXT record</li>
+<li>Run again with <code>--renew</code> except the <code>--issue</code> flag</li>
+<li>It is ready under <code>~/.acme.sh</code> directory</li>
+</ul>
+<h1 id="running-doh-plain-dns-and-dot">Running DOH, Plain DNS, and DOT</h1>
+<p>I use Adguard Home.</p>
+<ul>
+<li>Run <code>wget --no-verbose -O - https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v</code></li>
+<li>It will download everything that is necessary</li>
+<li>Just follow the instruction to access the panel on your localhost and modify its settings</li>
+</ul>
+
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/haproxy/">HAProxy as an upstream reverse proxy</a></li>
+				
+				<li><a href="/posts/tonsite/">Let&#39;s Deploy TON Site </a></li>
+				
+				<li><a href="/posts/dns/">DNS and Certificate</a></li>
+				
+				<li><a href="/posts/common-vpn-protocols/">Install Common VPN Protocols</a></li>
+				
+				<li><a href="/posts/tor/">How to Run TOR Bridge ?</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2024 <a href="http://localhost:1313/"><b>Alireza Gharib. All right reserved</b></a>.
+	<a href="https://github.com/Gharib110"><b>Github</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

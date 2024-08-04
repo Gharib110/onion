@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>How to Run TOR Bridge ?</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	=================<br>
+	== <a href="http://localhost:1313/">Onion Links</a> ==<br>
+	=================
+	<div style="float: right;">Onion Links</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>How to Run TOR Bridge ?</h1>
+			<b><time>28.07.2024 00:00</time></b>
+		       
+		           <a href="/tags/proxifying">proxifying</a>
+        	       
+
+			<div>
+				<h1 id="installing-tor-on-debian-based-distros">Installing TOR on Debian Based Distros</h1>
+<ul>
+<li>Install apt-transport-https <code>apt install apt-transport-https</code></li>
+<li>Create a new file in /etc/apt/sources.list.d/ named tor.list. Add the following entries</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>deb     <span style="color:#f92672">[</span>arch<span style="color:#f92672">=</span>amd64 signed-by<span style="color:#f92672">=</span>/usr/share/keyrings/deb.torproject.org-keyring.gpg<span style="color:#f92672">]</span> https://deb.torproject.org/torproject.org &lt;DISTRIBUTION&gt;/jammy main
+</span></span><span style="display:flex;"><span>deb-src <span style="color:#f92672">[</span>arch<span style="color:#f92672">=</span>amd64 signed-by<span style="color:#f92672">=</span>/usr/share/keyrings/deb.torproject.org-keyring.gpg<span style="color:#f92672">]</span> https://deb.torproject.org/torproject.org &lt;DISTRIBUTION&gt;/jammy main
+</span></span></code></pre></div><ul>
+<li>Then add the gpg key used to sign the packages <code>wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/deb.torproject.org-keyring.gpg &gt;/dev/null</code></li>
+<li>Finally Run <code>apt update &amp;&amp; apt install tor deb.torproject.org-keyring</code></li>
+</ul>
+<h1 id="configuring-obfs4-bridge">Configuring Obfs4 Bridge</h1>
+<ul>
+<li>Clone <code>https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird</code></li>
+<li>Install gvm <code>https://github.com/jetsung/golang-install</code> and latest golang tools</li>
+<li>Compile the lyrebird with the instruction provided in its repository then put the binary in <code>/usr/local/bin/</code> directory</li>
+<li>Open <code>/etc/tor/torrc</code> file add the following lines</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>RunAsDaemon <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>ORPort <span style="color:#ae81ff">6889</span>
+</span></span><span style="display:flex;"><span>ExtORPort auto
+</span></span><span style="display:flex;"><span>ExitPolicy reject *:*
+</span></span><span style="display:flex;"><span>BridgeRelay <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>PublishServerDescriptor <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>ServerTransportPlugin obfs4 exec /usr/local/bin/lyrebird
+</span></span><span style="display:flex;"><span>ServerTransportListenAddr obfs4 0.0.0.0:&lt;port&gt;
+</span></span><span style="display:flex;"><span>ContactInfo yourname@example.com
+</span></span><span style="display:flex;"><span>Nickname FreeBeerPrivate
+</span></span></code></pre></div><ul>
+<li>Open <code>/etc/apparmor.d/system_tor</code> and add this line  <code>/usr/local/bin/lyrebird ix,</code></li>
+<li>Run <code>sudo apparmor_parser -r /etc/apparmor.d/system_tor</code></li>
+<li>Restart the <code>tor.service</code> with systemd</li>
+<li>Obtain fingerprint and the bridge with these two commands <code>cat /var/lib/tor/pt_state/obfs4_bridgeline.txt</code>, <code>cat /var/lib/tor/fingerprint</code></li>
+</ul>
+<h1 id="configuring-webtunnel-bridge">Configuring WebTunnel Bridge</h1>
+<ul>
+<li>You can create a new tor instance with <code>tor-instances create &lt;name&gt;</code> or replace it with OBFS4</li>
+<li>Open the instance torrc file or the original torrc file and add the following lines</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ORPort <span style="color:#ae81ff">36788</span>
+</span></span><span style="display:flex;"><span>ExtORPort auto
+</span></span><span style="display:flex;"><span>ExitPolicy reject *:*
+</span></span><span style="display:flex;"><span>BridgeRelay <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>PublishServerDescriptor <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>ServerTransportPlugin webtunnel exec /usr/local/bin/webtunnel
+</span></span><span style="display:flex;"><span>ServerTransportListenAddr webtunnel 127.0.0.1:15003
+</span></span><span style="display:flex;"><span>ServerTransportOptions webtunnel url<span style="color:#f92672">=</span>https://domain.sth:443/&lt;sth&gt;
+</span></span><span style="display:flex;"><span>ContactInfo sth@protonmail.com
+</span></span><span style="display:flex;"><span>Nickname sth
+</span></span></code></pre></div><ul>
+<li>Like Obfs4 do the following</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano/vi /etc/apparmor.d/system_tor
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>add this line: /usr/local/bin/webtunnel ix,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apparmor_parser -r /etc/apparmor.d/system_tor
+</span></span></code></pre></div><ul>
+<li>install nginx and add a conf like this</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    listen <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:443 ssl http2;
+</span></span><span style="display:flex;"><span>    listen <span style="color:#ae81ff">443</span> ssl http2;
+</span></span><span style="display:flex;"><span>    server_name domain.sth;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#ssl on;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># certificates generated via acme.sh</span>
+</span></span><span style="display:flex;"><span>    ssl_certificate path.crt;
+</span></span><span style="display:flex;"><span>    ssl_certificate_key path.key;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ssl_session_timeout 15m;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ssl_protocols TLSv1.2 TLSv1.3;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ssl_prefer_server_ciphers off;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ssl_session_cache shared:MozSSL:50m;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#ssl_ecdh_curve secp521r1,prime256v1,secp384r1;</span>
+</span></span><span style="display:flex;"><span>    ssl_session_tickets off;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    add_header Strict-Transport-Security <span style="color:#e6db74">&#34;max-age=63072000&#34;</span> always;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    location <span style="color:#f92672">=</span> /&lt;sth&gt; <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        proxy_pass http://127.0.0.1:15003;
+</span></span><span style="display:flex;"><span>        proxy_http_version 1.1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">### Set WebSocket headers ###</span>
+</span></span><span style="display:flex;"><span>        proxy_set_header Upgrade $http_upgrade;
+</span></span><span style="display:flex;"><span>        proxy_set_header Connection <span style="color:#e6db74">&#34;upgrade&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">### Set Proxy headers ###</span>
+</span></span><span style="display:flex;"><span>        proxy_set_header        Accept-Encoding   <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header        Host            $host;
+</span></span><span style="display:flex;"><span>        proxy_set_header        X-Real-IP       $remote_addr;
+</span></span><span style="display:flex;"><span>        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>        proxy_set_header        X-Forwarded-Proto $scheme;
+</span></span><span style="display:flex;"><span>        add_header              Front-End-Https   on;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        proxy_redirect     off;
+</span></span><span style="display:flex;"><span>        access_log  off;
+</span></span><span style="display:flex;"><span>        error_log off;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>You can put the domain.sth behind CDN or not ;)</li>
+</ul>
+<p>Thanks and Enjoy The Bridge</p>
+
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/haproxy/">HAProxy as an upstream reverse proxy</a></li>
+				
+				<li><a href="/posts/tonsite/">Let&#39;s Deploy TON Site </a></li>
+				
+				<li><a href="/posts/dns/">DNS and Certificate</a></li>
+				
+				<li><a href="/posts/common-vpn-protocols/">Install Common VPN Protocols</a></li>
+				
+				<li><a href="/posts/tor/">How to Run TOR Bridge ?</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2024 <a href="http://localhost:1313/"><b>Alireza Gharib. All right reserved</b></a>.
+	<a href="https://github.com/Gharib110"><b>Github</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

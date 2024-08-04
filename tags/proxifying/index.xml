@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Proxifying on Onion Links</title>
+    <link>http://localhost:1313/tags/proxifying/</link>
+    <description>Recent content in Proxifying on Onion Links</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Alireza Gharib. All right reserved</copyright>
+    <lastBuildDate>Mon, 29 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/proxifying/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install Common VPN Protocols</title>
+      <link>http://localhost:1313/posts/common-vpn-protocols/</link>
+      <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/common-vpn-protocols/</guid>
+      <description>How to install and use Common VPN Protocols ?!</description>
+    </item>
+    <item>
+      <title>How to Run TOR Bridge ?</title>
+      <link>http://localhost:1313/posts/tor/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/tor/</guid>
+      <description>How to Deploy OBFS4 and WebTunnel Bridges ?</description>
+    </item>
+    <item>
+      <title>SniProxy</title>
+      <link>http://localhost:1313/posts/sniproxy/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sniproxy/</guid>
+      <description>How to proxify SNIs to cloak your real IP address ?!</description>
+    </item>
+  </channel>
+</rss>

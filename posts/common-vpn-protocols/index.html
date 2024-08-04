@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>Install Common VPN Protocols</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	=================<br>
+	== <a href="http://localhost:1313/">Onion Links</a> ==<br>
+	=================
+	<div style="float: right;">Onion Links</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>Install Common VPN Protocols</h1>
+			<b><time>29.07.2024 00:00</time></b>
+		       
+		           <a href="/tags/proxifying">proxifying</a>
+        	       
+
+			<div>
+				<h1 id="openvpn-and-wireguard">OpenVPN and Wireguard</h1>
+<p>Use <a href="https://github.com/Nyr">Nyr</a> scripts to fully install and manage users with them.
+Download the respective clients from the official sources to avoid further problems</p>
+<h1 id="openconnect-and-l2tpipsec">Openconnect and L2TP/IPSec</h1>
+<ul>
+<li>First install the Docker based on the DigitalOcean instructions <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04">Ubuntu22</a></li>
+<li>Run the following commands to run your server, the second command ask for password for your user</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name ocserv --restart always --privileged -p 443:443 -p 443:443/udp -e CA_CN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fqdn.sth&#34;</span> -e CA_ORG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fqdn.sth&#34;</span> -e CA_DAYS<span style="color:#f92672">=</span><span style="color:#ae81ff">3650</span> -e SRV_CN<span style="color:#f92672">=</span>fqdn.sth -e SRV_ORG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fqdn.sth&#34;</span> -e SRV_DAYS<span style="color:#f92672">=</span><span style="color:#ae81ff">3650</span> -e NO_TEST_USER<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> -d tommylau/ocserv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker exec -ti ocserv ocpasswd -c /etc/ocserv/ocpasswd -g <span style="color:#e6db74">&#34;Route,All&#34;</span> tommy 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name ipsec-vpn-server --restart<span style="color:#f92672">=</span>always --env-file ./vpn.env  -v /mnt/ikev2-vpn-data:/etc/ipsec.d -v /lib/modules:/lib/modules:ro -p 500:500/udp -p 4500:4500/udp -d --privileged hwdsl2/ipsec-vpn-server
+</span></span></code></pre></div><ul>
+<li>put the following in the <code>vpn.env</code> file</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>VPN_IPSEC_PSK<span style="color:#f92672">=</span>your_ipsec_pre_shared_key
+</span></span><span style="display:flex;"><span>VPN_USER<span style="color:#f92672">=</span>your_vpn_username
+</span></span><span style="display:flex;"><span>VPN_PASSWORD<span style="color:#f92672">=</span>your_vpn_password
+</span></span></code></pre></div><ul>
+<li>Use openconnect client and native L2TP/IPSec available on various Operating Systems</li>
+</ul>
+
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/haproxy/">HAProxy as an upstream reverse proxy</a></li>
+				
+				<li><a href="/posts/tonsite/">Let&#39;s Deploy TON Site </a></li>
+				
+				<li><a href="/posts/dns/">DNS and Certificate</a></li>
+				
+				<li><a href="/posts/common-vpn-protocols/">Install Common VPN Protocols</a></li>
+				
+				<li><a href="/posts/tor/">How to Run TOR Bridge ?</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2024 <a href="http://localhost:1313/"><b>Alireza Gharib. All right reserved</b></a>.
+	<a href="https://github.com/Gharib110"><b>Github</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>
