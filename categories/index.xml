@@ -7,6 +7,21 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Alireza Gharib. All right reserved</copyright>
+    <lastBuildDate>Thu, 15 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://oni0n.ir/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Onion, TOR, OnionLinks</title>
+      <link>https://oni0n.ir/categories/onion-tor-onionlinks/</link>
+      <pubDate>Thu, 15 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://oni0n.ir/categories/onion-tor-onionlinks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Proxy, VPN</title>
+      <link>https://oni0n.ir/categories/proxy-vpn/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://oni0n.ir/categories/proxy-vpn/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

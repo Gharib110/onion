@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Alireza Gharib. All right reserved</copyright>
-    <lastBuildDate>Tue, 06 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://oni0n.ir/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Onion Links</title>
+      <link>https://oni0n.ir/posts/onions6/</link>
+      <pubDate>Thu, 15 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://oni0n.ir/posts/onions6/</guid>
+      <description>Onion links around the TOR Network</description>
+    </item>
     <item>
       <title>Onion Links and Search Engine</title>
       <link>https://oni0n.ir/posts/greetings/</link>
@@ -50,6 +57,13 @@
       <pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate>
       <guid>https://oni0n.ir/posts/onions/</guid>
       <description>Onion links around the TOR Network</description>
+    </item>
+    <item>
+      <title>How to Run TOR Bridge ?</title>
+      <link>https://oni0n.ir/posts/tor/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://oni0n.ir/posts/tor/</guid>
+      <description>How to Deploy OBFS4 and WebTunnel Bridges ?</description>
     </item>
   </channel>
 </rss>

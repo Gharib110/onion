@@ -2,13 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://oni0n.ir/</loc>
-    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
+    <loc>https://oni0n.ir/categories/</loc>
+    <lastmod>2024-08-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://oni0n.ir/posts/greetings/</loc>
-    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
+    <loc>https://oni0n.ir/</loc>
+    <lastmod>2024-08-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://oni0n.ir/posts/onions6/</loc>
+    <lastmod>2024-08-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://oni0n.ir/categories/onion-tor-onionlinks/</loc>
+    <lastmod>2024-08-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://oni0n.ir/posts/</loc>
+    <lastmod>2024-08-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://oni0n.ir/tags/</loc>
+    <lastmod>2024-08-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://oni0n.ir/tags/tor-onion-onion_links/</loc>
+    <lastmod>2024-08-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://oni0n.ir/posts/greetings/</loc>
     <lastmod>2024-08-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://oni0n.ir/posts/onions5/</loc>
@@ -26,8 +41,13 @@
     <loc>https://oni0n.ir/posts/onions/</loc>
     <lastmod>2024-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://oni0n.ir/categories/</loc>
+    <loc>https://oni0n.ir/posts/tor/</loc>
+    <lastmod>2024-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://oni0n.ir/tags/</loc>
+    <loc>https://oni0n.ir/tags/proxifying/</loc>
+    <lastmod>2024-07-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://oni0n.ir/categories/proxy-vpn/</loc>
+    <lastmod>2024-07-28T00:00:00+00:00</lastmod>
   </url>
 </urlset>
